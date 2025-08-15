@@ -2,6 +2,7 @@ services:
   - type: web
     name: cleancasino-backend
     env: node
+    rootDir: cleancasino_site
     plan: free
     buildCommand: npm install
     startCommand: npm start
@@ -12,8 +13,4 @@ services:
       - key: CORS_ORIGIN
         value: https://holyneuron.github.io/cleancasino
       - key: DB_PATH
-        value: /var/data/cleancasino.db
-    disk:
-      name: data
-      mountPath: /var/data
-      sizeGB: 1
+        value: /tmp/cleancasino.db
