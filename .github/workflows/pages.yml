@@ -1,8 +1,6 @@
 name: Deploy Pages
-
 on:
-  push:
-    branches: [ main ]
+  push: { branches: [ main ] }
   workflow_dispatch:
 
 permissions:
@@ -22,10 +20,18 @@ jobs:
 
       - name: Prepare static site from cleancasino_site
         run: |
+          set -e
           mkdir -p site
-          rsync -av --delete cleancasino_site/assets site/assets
+          cp -R cleancasino_site/assets site/
+          cp cleancasino_site/index.html site/
+          cp cleancasino_site/about.html site/
+          cp cleancasino_site/faq.html site/
+          cp cleancasino_site/join.html site/
+          # Вставляем base и адрес бэкенда на всех страницах
           for f in index.html about.html faq.html join.html; do
-            cp cleancasino_site/$f site/$f
+            # base href, чтобы ссылки и assets корректно работали под /cleancasino/
+            sed -i '0,/<head>/s//<head>\n    <base href="\/cleancasino\/">/' site/$f
+            # window.CC_API_BASE перед analytics.js
             sed -i 's|<script src="assets/js/analytics.js"></script>|<script>window.CC_API_BASE="https://cleancasino-backend.onrender.com";</script>\n    <script src="assets/js/analytics.js"></script>|' site/$f
           done
 
