@@ -1,0 +1,8 @@
+<!-- assets/img/card-ace.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="180" viewBox="0 0 140 180">
+  <rect x="8" y="8" width="124" height="164" rx="12" fill="#fafafa"/>
+  <rect x="8" y="8" width="124" height="164" rx="12" fill="none" stroke="#111" stroke-width="2"/>
+  <text x="20" y="30" font-family="Arial" font-size="20" fill="#e63946">A</text>
+  <path d="M70 70 l20 35 h-40z" fill="#111"/>
+  <text x="120" y="160" font-family="Arial" font-size="20" fill="#e63946" transform="rotate(180 120,160)">A</text>
+</svg>

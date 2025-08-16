@@ -1,0 +1,227 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="CleanCasino — честное, прозрачное и технологичное онлайн‑казино будущего. Присоединяйтесь к комьюнити и первым узнайте о запуске." />
+    <title>CleanCasino — честное казино будущего</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!-- Анимированный фон -->
+    <div class="bg fx-grid"></div>
+
+    <!-- Навигация -->
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="CleanCasino" class="logo" />
+          <span>CleanCasino</span>
+        </a>
+        <nav class="nav-links" id="nav-links">
+          <a href="about.html">О проекте</a>
+          <a href="#how">Как это работает</a>
+          <a href="faq.html">FAQ</a>
+          <a class="btn btn-primary sm" href="join.html">Присоединиться</a>
+        </nav>
+        <button class="burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy" data-aos="fade-up" data-aos-delay="50">
+          <div class="badge">Концепт • Ранний доступ</div>
+          <h1>
+            Честное казино будущего
+            <span class="gradient-text">CleanCasino</span>
+          </h1>
+          <p class="subtitle">
+            Прозрачные механики, офлайн‑подтверждение ставок и стильная атмосфера Лас‑Вегаса в цифровую эпоху. Мы строим площадку, где доверие — стандарт.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="join.html">Присоединиться</a>
+            <a class="btn btn-ghost" href="#about">Узнать больше</a>
+          </div>
+        </div>
+        <div class="hero-visual" data-aos="zoom-in" data-aos-delay="150">
+          <img class="float chip" src="assets/img/chip.svg" alt="Фишка" />
+          <img class="float card" src="assets/img/card-ace.svg" alt="Туз" />
+          <img class="float roulette" src="assets/img/roulette.svg" alt="Рулетка" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Демо офлайн‑подтверждения ставки: Мини‑рулетка -->
+    <section class="section" id="offline-demo">
+      <div class="container" data-aos="fade-up">
+        <h2>Демо: офлайн‑проверяемая рулетка</h2>
+        <p class="lead">Не верите на слово? Проверьте. Каждая ставка может быть сделана <strong>офлайн</strong>, и результат будет тем же самым — независимо от того, куда вы поставите. Секрет — детерминированный расчёт результата по вашему seed.</p>
+
+        <div class="card" style="padding:20px; display:grid; gap:14px;">
+          <div class="form-row">
+            <label>Ваш секрет (seed)</label>
+            <input type="text" id="rl-seed" placeholder="любой текст" />
+          </div>
+          <div class="form-row">
+            <label>Ставка</label>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <label><input type="radio" name="rl-bet" value="red" checked> Красное</label>
+              <label><input type="radio" name="rl-bet" value="black"> Чёрное</label>
+              <label><input type="radio" name="rl-bet" value="odd"> Нечёт</label>
+              <label><input type="radio" name="rl-bet" value="even"> Чёт</label>
+            </div>
+          </div>
+
+          <div id="rl-wheel" style="position:relative; width:240px; height:240px; margin:10px auto; border-radius:50%; border:2px solid rgba(255,255,255,.15); overflow:hidden; box-shadow: 0 12px 30px rgba(0,0,0,.5);">
+            <canvas id="rl-canvas" width="240" height="240"></canvas>
+            <div style="position:absolute; left:50%; top:-8px; transform:translateX(-50%); width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:14px solid #fff;"></div>
+          </div>
+
+          <button class="btn btn-primary" id="rl-spin">Крутить</button>
+          <div id="rl-result" style="margin-top:6px; min-height:24px;"></div>
+
+          <div class="form-note">
+            Правило проверки: результат — это детерминированное число от 0 до 36, вычисленное локально из вашего seed. Сохраните seed и повторите ставку офлайн — число будет тем же самым. Бэкенд на исход не влияет.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О проекте -->
+    <section class="section" id="about">
+      <div class="container" data-aos="fade-up">
+        <h2>О проекте</h2>
+        <p class="lead">
+          CleanCasino — визионерский проект финтех‑и гейм‑энтузиастов. Наша миссия — создать онлайн‑казино, где правила прозрачны, а результаты можно проверять. Технологичность, стиль и честность — чтобы вернуть игрокам доверие.
+        </p>
+        <div class="features-inline">
+          <span class="tag">Прозрачность</span>
+          <span class="tag">Верифицируемая честность</span>
+          <span class="tag">Технологии</span>
+          <span class="tag">Атмосфера</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section class="section" id="how">
+      <div class="container">
+        <h2 data-aos="fade-up">Как это работает</h2>
+        <div class="cards">
+          <article class="card" data-aos="fade-up" data-aos-delay="50">
+            <div class="icon"><img src="assets/img/chip.svg" alt="Честность" /></div>
+            <h3>Проверяемая честность</h3>
+            <p>Каждый раунд — верифицируем: криптографические хэши, открытые сиды и офлайн‑подтверждение ставки позволяют убедиться в результате.</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><img src="assets/img/card-ace.svg" alt="Прозрачность" /></div>
+            <h3>Открытые алгоритмы</h3>
+            <p>Ключевые механики документированы и доступны для аудита. Никаких «черных ящиков».</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="150">
+            <div class="icon"><img src="assets/img/roulette.svg" alt="Выплаты" /></div>
+            <h3>Прозрачные выплаты</h3>
+            <p>Статистика банков и RTP публикуется. Вы видите движения средств и формирование выплат.</p>
+          </article>
+          <article class="card" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon"><img src="assets/img/favicon.svg" alt="Комьюнити" /></div>
+            <h3>Комьюнити‑подход</h3>
+            <p>Собираем обратную связь с ранних этапов и вместе создаем лучшее казино будущего.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Будущие фичи -->
+    <section class="section" id="future">
+      <div class="container">
+        <h2 data-aos="fade-up">Что дальше</h2>
+        <div class="grid" data-aos="fade-up" data-aos-delay="100">
+          <div class="tile">
+            <h4>Бета‑тест площадки</h4>
+            <p>Ранний доступ с бонусами для активных тестировщиков.</p>
+            <span class="badge neon">Скоро</span>
+          </div>
+          <div class="tile">
+            <h4>Турниры и рейтинг</h4>
+            <p>Еженедельные состязания и лидерборды с прозрачными правилами.</p>
+            <span class="badge gold">План</span>
+          </div>
+          <div class="tile">
+            <h4>Портфель игр</h4>
+            <p>Рулетка, блэкджек, слоты с верифицируемой честностью и понятным RTP.</p>
+            <span class="badge red">R&D</span>
+          </div>
+          <div class="tile">
+            <h4>Аудиты и отчеты</h4>
+            <p>Публичные проверки механик и публикация данных.</p>
+            <span class="badge cyan">Прозрачность</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="section" id="contact">
+      <div class="container contact" data-aos="fade-up">
+        <h2>Связаться с нами</h2>
+        <p class="lead">Оставьте почту и Telegram — пришлем новости и приглашение в бета‑доступ.</p>
+        <form id="contact-form" class="form">
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-row">
+            <label for="tg">Telegram</label>
+            <input type="text" id="tg" name="tg" placeholder="@username" />
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить</button>
+          <p class="form-note">Нажимая «Отправить», вы соглашаетесь с получением новостей о проекте.</p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer">
+        <a class="brand small" href="index.html">
+          <img src="assets/img/logo.svg" alt="CleanCasino" class="logo" />
+          <span>CleanCasino</span>
+        </a>
+        <nav class="footer-links">
+          <a href="about.html">О проекте</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html" class="accent">Присоединиться</a>
+        </nav>
+        <div class="socials">
+          <img src="assets/img/email.svg" alt="Email" />
+          <img src="assets/img/telegram.svg" alt="Telegram" />
+        </div>
+      </div>
+      <div class="container legal">
+        <p>© <span id="year"></span> CleanCasino. Концепт‑проект. Азартные игры не предоставляются.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+      // Укажите адрес бэкенда или задайте через localStorage.setItem('CC_API_BASE', 'https://backend.example.com')
+      window.CC_API_BASE = localStorage.getItem('CC_API_BASE') || 'https://REPLACE_WITH_YOUR_BACKEND_HOST';
+      // Supabase прямой канал (anon)
+      window.CC_SUPABASE_URL = 'https://xgdvwtmfxfriqmayqdou.supabase.co';
+      window.CC_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhnZHZ3dG1meGZyaXFtYXlxZG91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzNDIzMTUsImV4cCI6MjA3MDkxODMxNX0.zecGldfeYHHhXAyfYVv9abCht6TfWAAdruU1z8wViSA';
+    </script>
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
