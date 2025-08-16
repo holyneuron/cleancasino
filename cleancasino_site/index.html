@@ -61,55 +61,7 @@
       </div>
     </section>
 
-    <!-- Демо офлайн‑подтверждения ставки: Мини‑рулетка -->
-    <section class="section" id="offline-demo">
-      <div class="container" data-aos="fade-up">
-        <h2>Демо: офлайн‑проверяемая рулетка</h2>
-        <p class="lead">Не верите на слово? Проверьте. Каждая ставка может быть сделана <strong>офлайн</strong>, и результат будет тем же самым — независимо от ставки. Секрет — детерминированный расчёт результата по вашему seed.</p>
-        <div class="card" style="padding:14px; margin:10px 0 18px;">
-          <ol style="margin:0 0 0 18px; color:#bdbdbd;">
-            <li>Введите любое число (seed) — к примеру 528491. Запомните его.</li>
-            <li>Выберите ставку и нажмите «Крутить» — получите число от 0 до 36.</li>
-            <li>Повторите офлайн с тем же seed — выпадет то же число. Сервер результат не меняет.</li>
-          </ol>
-        </div>
-
-        <div class="card" style="padding:18px; display:grid; grid-template-columns: 1.2fr 1fr; gap:18px; align-items:center;">
-          <div style="display:grid; gap:12px;">
-            <div class="form-row">
-              <label>Введите любое число (seed) — запомните его</label>
-              <input type="text" id="rl-seed" placeholder="например: 528491 или любое слово" />
-            </div>
-            <div class="form-row">
-              <label>Ставка</label>
-              <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <label><input type="radio" name="rl-bet" value="red" checked> Красное</label>
-                <label><input type="radio" name="rl-bet" value="black"> Чёрное</label>
-                <label><input type="radio" name="rl-bet" value="odd"> Нечёт</label>
-                <label><input type="radio" name="rl-bet" value="even"> Чёт</label>
-              </div>
-            </div>
-            <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-              <button class="btn btn-primary" id="rl-spin">Крутить</button>
-              <div id="rl-result" style="min-height:24px;"></div>
-            </div>
-            <div class="form-note">
-              Правило проверки: результат — это число от 0 до 36, вычисленное локально из вашего seed. Сохраните seed и повторите ставку офлайн — выпадет то же число. Сервер на исход не влияет.
-            </div>
-          </div>
-          <div>
-            <div id="rl-wheel" style="position:relative; width:180px; height:180px; margin:0 auto; border-radius:12px; border:1px solid rgba(255,255,255,.12); padding:10px; background: rgba(255,255,255,.03);">
-              <div style="position:relative; width:160px; height:160px; margin:0 auto; border-radius:50%; border:2px solid rgba(255,255,255,.15); overflow:hidden; box-shadow: 0 12px 30px rgba(0,0,0,.5);">
-                <canvas id="rl-canvas" width="160" height="160"></canvas>
-                <div style="position:absolute; left:50%; top:-6px; transform:translateX(-50%); width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-bottom:12px solid #fff;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- О проекте -->
+    <!-- О проекте (поднято выше демо) -->
     <section class="section" id="about">
       <div class="container" data-aos="fade-up">
         <h2>О проекте</h2>
@@ -121,6 +73,53 @@
           <span class="tag">Верифицируемая честность</span>
           <span class="tag">Технологии</span>
           <span class="tag">Атмосфера</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Демо офлайн‑подтверждения ставки: Мини‑рулетка (full / hero-like) -->
+    <section class="section" id="offline-demo" style="padding-top:40px; padding-bottom:40px;">
+      <div class="container" data-aos="fade-up" style="min-height:80vh; display:grid; place-items:center;">
+        <div style="width:100%; display:grid; grid-template-columns: 1fr 420px; gap:24px; align-items:center;">
+          <div style="justify-self:center;">
+            <div id="rl-wheel" style="position:relative; width:560px; height:560px; margin:0 auto; border-radius:24px; border:1px solid rgba(255,255,255,.12); padding:14px; background: rgba(255,255,255,.03); box-shadow: 0 20px 60px rgba(0,0,0,.6);">
+              <div style="position:relative; width:520px; height:520px; margin:0 auto; border-radius:50%; border:2px solid rgba(255,255,255,.15); overflow:hidden; box-shadow: 0 18px 48px rgba(0,0,0,.55);">
+                <canvas id="rl-canvas" width="520" height="520"></canvas>
+                <div style="position:absolute; left:50%; top:-10px; transform:translateX(-50%); width:0; height:0; border-left:10px solid transparent; border-right:10px solid transparent; border-bottom:18px solid #fff;"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 style="margin-top:0;">Демо: офлайн‑проверяемая рулетка</h2>
+            <p class="lead" style="margin-bottom:12px;">Не верите на слово? Проверьте. Каждая ставка может быть сделана <strong>офлайн</strong>, и результат будет тем же самым — независимо от ставки. Секрет — детерминированный расчёт результата по вашему seed.</p>
+            <div class="card" style="padding:14px; margin:10px 0 18px;">
+              <ol style="margin:0 0 0 18px; color:#bdbdbd;">
+                <li>Введите любое число (seed) — к примеру 528491. Запомните его.</li>
+                <li>Выберите ставку и нажмите «Крутить» — получите число от 0 до 36.</li>
+                <li>Повторите офлайн с тем же seed — выпадет то же число. Сервер результат не меняет.</li>
+              </ol>
+            </div>
+            <div class="card" style="padding:18px; display:grid; gap:12px;">
+              <div class="form-row">
+                <label>Введите любое число (seed) — запомните его</label>
+                <input type="text" id="rl-seed" placeholder="например: 528491 или любое слово" />
+              </div>
+              <div class="form-row">
+                <label>Ставка</label>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <label><input type="radio" name="rl-bet" value="red" checked> Красное</label>
+                  <label><input type="radio" name="rl-bet" value="black"> Чёрное</label>
+                  <label><input type="radio" name="rl-bet" value="odd"> Нечёт</label>
+                  <label><input type="radio" name="rl-bet" value="even"> Чёт</label>
+                </div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                <button class="btn btn-primary" id="rl-spin">Крутить</button>
+                <div id="rl-result" style="min-height:24px;"></div>
+              </div>
+              <div class="form-note">Результат считается локально по seed. Сохраните seed — проверите офлайн в любой момент.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
