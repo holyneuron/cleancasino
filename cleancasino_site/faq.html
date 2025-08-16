@@ -1,0 +1,93 @@
+<!-- faq.html -->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAQ — CleanCasino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="bg fx-grid"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="CleanCasino" class="logo" />
+          <span>CleanCasino</span>
+        </a>
+        <nav class="nav-links" id="nav-links">
+          <a href="about.html">О проекте</a>
+          <a href="index.html#how">Как это работает</a>
+          <a href="faq.html" aria-current="page">FAQ</a>
+          <a class="btn btn-primary sm" href="join.html">Присоединиться</a>
+        </nav>
+        <button class="burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top: 96px;">
+      <div class="container" data-aos="fade-up">
+        <div class="badge">Вопросы и ответы</div>
+        <h1 class="gradient-text" style="font-family: Orbitron, sans-serif; margin: 10px 0 6px;">FAQ</h1>
+        <p class="lead">Ключевые вопросы о концепте, честности и планах запуска.</p>
+
+        <div class="faq-list" style="margin-top:20px;">
+          <div class="faq-item">
+            <button class="faq-q">Это настоящее казино?</button>
+            <div class="faq-a"><p>Пока нет. Это концепт‑проект и прототип. Мы собираем аудиторию и обратную связь, готовим технологии и документацию.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Как доказывается честность?</button>
+            <div class="faq-a"><p>Планируем использовать криптографические хэши (commit‑reveal), открытые сиды и публичные логи, доступные для проверки каждым игроком.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Когда запуск беты?</button>
+            <div class="faq-a"><p>Ведём подготовку. Подпишитесь на рассылку на главной или на странице «Присоединиться», чтобы получить ранний доступ.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Будут ли игровые ограничения?</button>
+            <div class="faq-a"><p>Мы за ответственную игру. Планируются лимиты, паузы и инструменты самоконтроля.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer">
+        <a class="brand small" href="index.html">
+          <img src="assets/img/logo.svg" alt="CleanCasino" class="logo" />
+          <span>CleanCasino</span>
+        </a>
+        <nav class="footer-links">
+          <a href="about.html">О проекте</a>
+          <a href="faq.html" aria-current="page">FAQ</a>
+          <a href="join.html" class="accent">Присоединиться</a>
+        </nav>
+        <div class="socials">
+          <img src="assets/img/email.svg" alt="Email" />
+          <img src="assets/img/telegram.svg" alt="Telegram" />
+        </div>
+      </div>
+      <div class="container legal">
+        <p>© <span id="year"></span> CleanCasino. Концепт‑проект.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+      window.CC_SUPABASE_URL = 'https://xgdvwtmfxfriqmayqdou.supabase.co';
+      window.CC_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhnZHZ3dG1meGZyaXFtYXlxZG91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzNDIzMTUsImV4cCI6MjA3MDkxODMxNX0.zecGldfeYHHhXAyfYVv9abCht6TfWAAdruU1z8wViSA';
+    </script>
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/faq.js"></script>
+  </body>
+</html>

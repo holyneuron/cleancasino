@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Админ панель - CleanCasino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .stat-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .section {
+            padding: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .subscribers-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .subscriber-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #28a745;
+        }
+
+        .subscriber-email {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .subscriber-telegram {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .subscriber-date {
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .events-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .event-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .event-type {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .event-data {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .event-date {
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Админ панель</h1>
+            <p>Статистика сайта CleanCasino</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>👥 Подписчики</h3>
+                <div class="stat-number" id="totalSubscribers">-</div>
+                <div class="stat-description">Всего подписчиков</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>👁️ Просмотры</h3>
+                <div class="stat-number" id="totalPageViews">-</div>
+                <div class="stat-description">Всего просмотров страниц</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>🎯 События</h3>
+                <div class="stat-number" id="totalEvents">-</div>
+                <div class="stat-description">Всего событий</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>🔄 Сессии</h3>
+                <div class="stat-number" id="totalSessions">-</div>
+                <div class="stat-description">Уникальных сессий</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <button class="refresh-btn" onclick="loadStats()">🔄 Обновить статистику</button>
+            <div id="message"></div>
+        </div>
+
+        <div class="section">
+            <h2>📧 Последние подписчики</h2>
+            <div id="subscribersList" class="subscribers-list">
+                <div class="loading">Загрузка подписчиков...</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Последние события</h2>
+            <div id="eventsList" class="events-list">
+                <div class="loading">Загрузка событий...</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⏱️ Время на страницах (топ)</h2>
+            <div id="pageTimeStats">
+                <div class="loading">Загрузка...</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📄 Просмотры по страницам</h2>
+            <div id="pageViewsStats">
+                <div class="loading">Загрузка...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Загрузка статистики при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+        });
+
+        // Функция загрузки статистики
+        async function loadStats() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = '<div class="loading">Загрузка статистики...</div>';
+
+            try {
+                // Загружаем общую статистику
+                const statsResponse = await fetch('/api/analytics/stats');
+                const statsData = await statsResponse.json();
+
+                if (statsData.success) {
+                    updateStatsCards(statsData.data);
+                    renderAggregateStats(statsData.data);
+                    messageDiv.innerHTML = '<div class="success">Статистика обновлена!</div>';
+                } else {
+                    throw new Error(statsData.error || 'Ошибка загрузки статистики');
+                }
+
+                // Загружаем подписчиков
+                await loadSubscribers();
+                
+                // Загружаем события
+                await loadEvents();
+
+            } catch (error) {
+                console.error('Ошибка загрузки статистики:', error);
+                messageDiv.innerHTML = `<div class="error">Ошибка: ${error.message}</div>`;
+            }
+        }
+
+        function renderAggregateStats(data) {
+            // Просмотры по страницам
+            const pvContainer = document.getElementById('pageViewsStats');
+            const pageViews = Array.isArray(data?.pageViewsByPage) ? data.pageViewsByPage : [];
+            if (pageViews.length === 0) {
+                pvContainer.innerHTML = '<div class="loading">Данных пока нет</div>';
+            } else {
+                const html = pageViews.map(row => `
+                    <div class="subscriber-item" style="border-left-color:#17a2b8">
+                        <div class="subscriber-email">${row.page || '/'}</div>
+                        <div class="subscriber-telegram">Просмотров: ${row.count}</div>
+                    </div>
+                `).join('');
+                pvContainer.innerHTML = html;
+            }
+
+            // Топ страниц по времени (на основе событий time_on_page)
+            const ptContainer = document.getElementById('pageTimeStats');
+            const timeEvents = Array.isArray(data?.timeOnPageEvents) ? data.timeOnPageEvents : [];
+            if (timeEvents.length === 0) {
+                ptContainer.innerHTML = '<div class="loading">Данных пока нет</div>';
+                return;
+            }
+            const totals = {};
+            timeEvents.forEach(ev => {
+                try {
+                    const ed = typeof ev.event_data === 'string' ? JSON.parse(ev.event_data) : (ev.event_data || {});
+                    const page = ed.page || ev.page || '/';
+                    const ms = Number(ed.timeSpent) || 0;
+                    if (!totals[page]) totals[page] = { ms: 0, hits: 0 };
+                    totals[page].ms += ms;
+                    totals[page].hits += 1;
+                } catch (_e) {}
+            });
+            const sorted = Object.entries(totals)
+                .map(([page, v]) => ({ page, totalSec: Math.round(v.ms / 1000), avgSec: Math.round((v.ms / Math.max(1, v.hits)) / 1000), hits: v.hits }))
+                .sort((a, b) => b.totalSec - a.totalSec)
+                .slice(0, 10);
+            if (sorted.length === 0) {
+                ptContainer.innerHTML = '<div class="loading">Данных пока нет</div>';
+            } else {
+                const html = sorted.map(r => `
+                    <div class="subscriber-item" style="border-left-color:#6f42c1">
+                        <div class="subscriber-email">${r.page}</div>
+                        <div class="subscriber-telegram">Всего: ${r.totalSec}s • Среднее: ${r.avgSec}s • Событий: ${r.hits}</div>
+                    </div>
+                `).join('');
+                ptContainer.innerHTML = html;
+            }
+        }
+
+        // Обновление карточек статистики
+        function updateStatsCards(data) {
+            document.getElementById('totalSubscribers').textContent = data.totalSubscribers?.count || 0;
+            document.getElementById('totalPageViews').textContent = data.totalPageViews?.count || 0;
+            document.getElementById('totalEvents').textContent = data.totalEvents?.count || 0;
+            document.getElementById('totalSessions').textContent = data.totalSessions?.count || 0;
+        }
+
+        // Загрузка подписчиков
+        async function loadSubscribers() {
+            const subscribersList = document.getElementById('subscribersList');
+            
+            try {
+                const response = await fetch('/api/email/subscribers');
+                const data = await response.json();
+
+                if (data.success && data.data.length > 0) {
+                    const subscribersHtml = data.data.map(subscriber => `
+                        <div class="subscriber-item">
+                            <div class="subscriber-email">${subscriber.email}</div>
+                            ${subscriber.telegram ? `<div class="subscriber-telegram">Telegram: ${subscriber.telegram}</div>` : ''}
+                            <div class="subscriber-date">${new Date(subscriber.created_at).toLocaleString('ru-RU')}</div>
+                        </div>
+                    `).join('');
+                    
+                    subscribersList.innerHTML = subscribersHtml;
+                } else {
+                    subscribersList.innerHTML = '<div class="loading">Подписчиков пока нет</div>';
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки подписчиков:', error);
+                subscribersList.innerHTML = '<div class="error">Ошибка загрузки подписчиков</div>';
+            }
+        }
+
+        // Загрузка событий
+        async function loadEvents() {
+            const eventsList = document.getElementById('eventsList');
+            
+            try {
+                const response = await fetch('/api/analytics/stats');
+                const data = await response.json();
+
+                const recentEvents = Array.isArray(data.data?.recentEvents) ? data.data.recentEvents : [];
+                if (data.success && recentEvents.length > 0) {
+                    const eventsHtml = recentEvents.map(event => {
+                        let eventData = '';
+                        try {
+                            const parsedData = typeof event.event_data === 'string' ? JSON.parse(event.event_data) : (event.event_data || {});
+                            eventData = Object.entries(parsedData)
+                                .filter(([key]) => !['password', 'confirmPassword'].includes(key))
+                                .map(([key, value]) => `${key}: ${value}`)
+                                .join(', ');
+                        } catch (e) {
+                            eventData = event.event_data || '';
+                        }
+
+                        return `
+                            <div class="event-item">
+                                <div class="event-type">${event.event_type}${event.page ? ` — ${event.page}` : ''}</div>
+                                ${eventData ? `<div class="event-data">${eventData}</div>` : ''}
+                                <div class="event-date">${new Date(event.created_at).toLocaleString('ru-RU')}</div>
+                            </div>
+                        `;
+                    }).join('');
+                    
+                    eventsList.innerHTML = eventsHtml;
+                } else {
+                    eventsList.innerHTML = '<div class="loading">Событий пока нет</div>';
+                }
+            } catch (error) {
+                console.error('Ошибка загрузки событий:', error);
+                eventsList.innerHTML = '<div class="error">Ошибка загрузки событий</div>';
+            }
+        }
+
+        // Автообновление каждые 30 секунд
+        setInterval(loadStats, 30000);
+    </script>
+</body>
+</html>
