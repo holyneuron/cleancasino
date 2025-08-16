@@ -1,6 +1,0 @@
-<!-- assets/img/chip.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
-  <circle cx="80" cy="80" r="74" fill="#111" stroke="#00F7FF" stroke-width="4"/>
-  <circle cx="80" cy="80" r="58" fill="none" stroke="#FFD166" stroke-width="4" stroke-dasharray="10 10"/>
-  <circle cx="80" cy="80" r="30" fill="#FF6B6B"/>
-</svg>
