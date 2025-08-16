@@ -172,8 +172,13 @@ function showToast(message) {
       ctx.lineWidth = 2;
       ctx.stroke();
       if (i === highlightIndex) {
-        ctx.fillStyle = 'rgba(255,255,255,.15)';
+        // свечением подсветим сектор
+        ctx.save();
+        ctx.shadowColor = 'rgba(255,255,255,.6)';
+        ctx.shadowBlur = Math.max(12, r * 0.06);
+        ctx.fillStyle = 'rgba(255,255,255,.16)';
         ctx.fill();
+        ctx.restore();
       }
       // числа
       ctx.save();
@@ -245,7 +250,7 @@ function showToast(message) {
     const bet = getBetChoice();
 
     // Анимация вращения до нужного сектора
-    const totalSpins = 5; // оборотов
+    const totalSpins = 6; // оборотов чуточку больше для динамики
     const step = (Math.PI*2)/numbers.length;
     const targetAngle = (numbers.length - target) * step; // чтобы указатель сверху показывал target
     const start = performance.now();
