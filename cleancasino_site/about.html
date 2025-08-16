@@ -1,0 +1,105 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>О проекте — CleanCasino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="bg fx-grid"></div>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img src="assets/img/logo.svg" alt="CleanCasino" class="logo" />
+          <span>CleanCasino</span>
+        </a>
+        <nav class="nav-links" id="nav-links">
+          <a href="about.html" aria-current="page">О проекте</a>
+          <a href="index.html#how">Как это работает</a>
+          <a href="faq.html">FAQ</a>
+          <a class="btn btn-primary sm" href="join.html">Присоединиться</a>
+        </nav>
+        <button class="burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top: 96px;">
+      <div class="container" data-aos="fade-up">
+        <div class="badge">Кто мы</div>
+        <h1 class="gradient-text" style="font-family: Orbitron, sans-serif; margin: 10px 0 6px;">О проекте</h1>
+        <p class="lead">Мы создаём площадку нового поколения: честность, верифицируемые результаты и прозрачность по умолчанию.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid" data-aos="fade-up" data-aos-delay="80">
+        <div class="tile">
+          <h4>Миссия</h4>
+          <p>Вернуть игрокам доверие к индустрии с помощью открытых алгоритмов, криптографических доказательств и прозрачных данных.</p>
+        </div>
+        <div class="tile">
+          <h4>Подход</h4>
+          <p>Открытость и совместная разработка с комьюнити. Документация, аудит и постоянная обратная связь.</p>
+        </div>
+        <div class="tile">
+          <h4>Этика</h4>
+          <p>Ответственная игра, защита данных и приоритет честности над «хайпом».</p>
+        </div>
+        <div class="tile">
+          <h4>Технологии</h4>
+          <p>Криптография для проверки результатов, аналитика для публикации RTP и фондов, автоматика для прозрачных процессов.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <h2>Команда и комьюнити</h2>
+        <p class="lead">Мы маленькая распределённая команда. На этапе концепта подключаем менторов и добровольцев. Хотите помочь — заходите на страницу «Присоединиться».</p>
+        <div class="cta" style="margin-top:16px;">
+          <a class="btn btn-primary" href="join.html">Стать ранним участником</a>
+          <a class="btn btn-ghost" href="index.html#contact">Связаться</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer">
+        <a class="brand small" href="index.html">
+          <img src="assets/img/logo.svg" alt="CleanCasino" class="logo" />
+          <span>CleanCasino</span>
+        </a>
+        <nav class="footer-links">
+          <a href="about.html" aria-current="page">О проекте</a>
+          <a href="faq.html">FAQ</a>
+          <a href="join.html" class="accent">Присоединиться</a>
+        </nav>
+        <div class="socials">
+          <img src="assets/img/email.svg" alt="Email" />
+          <img src="assets/img/telegram.svg" alt="Telegram" />
+        </div>
+      </div>
+      <div class="container legal">
+        <p>© <span id="year"></span> CleanCasino. Концепт‑проект.</p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script>
+      window.CC_SUPABASE_URL = 'https://xgdvwtmfxfriqmayqdou.supabase.co';
+      window.CC_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhnZHZ3dG1meGZyaXFtYXlxZG91Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzNDIzMTUsImV4cCI6MjA3MDkxODMxNX0.zecGldfeYHHhXAyfYVv9abCht6TfWAAdruU1z8wViSA';
+    </script>
+    <script src="assets/js/analytics.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
