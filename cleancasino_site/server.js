@@ -28,13 +28,26 @@ app.use(helmet({
   },
 }));
 
-// Rate limiting
+// Rate limiting: не ограничиваем GET-запросы на чтение админской статистики
 const limiter = rateLimit({
   windowMs: (process.env.RATE_LIMIT_WINDOW || 15) * 60 * 1000, // 15 минут
-  max: process.env.RATE_LIMIT_MAX || 100, // максимум 100 запросов
+  max: process.env.RATE_LIMIT_MAX || 1000, // поднимем лимит по умолчанию
+  standardHeaders: true,
+  legacyHeaders: false,
   message: {
     error: 'Слишком много запросов. Попробуйте позже.',
     retryAfter: Math.ceil((process.env.RATE_LIMIT_WINDOW || 15) * 60 / 60)
+  },
+  skip: (req) => {
+    const url = req.originalUrl || '';
+    const isReadStats = req.method === 'GET' && (
+      url.includes('/api/analytics/stats') ||
+      url.includes('/api/analytics/recent-events') ||
+      url.includes('/api/email/subscribers') ||
+      url.includes('/api/analytics/page-stats') ||
+      url.includes('/api/analytics/conversion-stats')
+    );
+    return isReadStats;
   }
 });
 app.use('/api/', limiter);
